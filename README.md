@@ -4,7 +4,8 @@ Authors:
 - Iris Horng
 - Qishuo Yin
 - Dylan Small
-Contributing: Jared Murray, William Chan, 
+
+Contributing: William Chan, Jared Murray
 
 For a detailed description of the method see:
 -in review
