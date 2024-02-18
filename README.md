@@ -7,7 +7,7 @@ Authors:
 
 Contributing: William Chan, Jared Murray
 
-For a detailed description of the method see:
+For a detailed description of our framework see:
 - Probabilistic Record Linkage: An Application to Gun Homicides (in review)
 
 Data:
@@ -36,6 +36,7 @@ Multiple steps were carried out to clean and prepare the data
   - the state that the injury occurred in is stored as `InjuryState`.
   - the city that the injury occurred in is stored as `InjuryCity`.
   - the numbered killed in the incident is stored as `NumKilled`.
+- We only keep states from each year that are well represented in the NVDRS dataset, according to the CDC Surveillence Summaries. Using this list of states for each year, we clean the GVA and NVDRS datasets.
 - Finally, we can save the cleaned data as an RDS or csv.
 
 # apply_fastlink.R 
@@ -49,10 +50,10 @@ Notes:
   - In `varnames`, you should list all the variables of interest.
   - In `stringdist.match`, it's recommended to list the variables that are strings (ie. words) from your variables of interest.
   - In `numeric.match`, it's recommended to list the variables that are numeric (ie. numbers) from your variables of interest.
-- the for loop indicated by `for(i in 1:33)` should span from 1 to the number of blocks that you have.
-  - To see how many blocks you have, run `names(blockstate_out)`. Then as an example, if you have 43 blocks, your for loop should say `for(i in 1:43)`.
+- the for loop indicated by `for(i in 1:41)` should span from 1 to the number of blocks that you have.
+  - To see how many blocks you have, run `names(blockstate_out)`. Then as an example, if you have 41 blocks, your for loop should say `for(i in 1:41)`.
 - if there is an error with running fastLink, it is most likely that one of the blocks does not have enough observations to carry out probabilistic record linkage, so you should create separate for loops to avoid that block.
-  - In our data, we had a total of 43 blocks. However, blocks 34 and 40 did not have enough observations. So our for loops run from 1 to 33, then 35 to 39, then 41 to 43 (skipping blocks 34 and 40).
+  - In our data, we had a total of 41 blocks.
 - save the fastLink matches as RDS or csv file.
 
 # combining_online_data.R
@@ -60,6 +61,7 @@ Here, we combining GVA Standard Reports
 From GVA's website (https://www.gunviolencearchive.org/reports), select which standard reports you would like to use to compare with your fastLink merged dataset. 
 - download each of the standard reports and save them as csv files. You can then read each of the csv files and store them as `data1`, `data2`, etc.
 - merge all of the data together into one file by doing `bind_rows(data1, data2)`.
+- clean this combined data so that it only contains states for each year that are well represented in the NVDRS dataset (this is the same criteria we used to clean our original GVA and NVDRS datasets)
 - save the combined file as an RDS file or csv file .
 
 # get_common_matches.R
