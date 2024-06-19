@@ -11,8 +11,8 @@ For a detailed description of our framework see:
 - Probabilistic Record Linkage: An Application to Gun Homicides (in review)
 
 Data:
-- Gun Violence Archive
-- National Violent Death Reporting System
+- Gun Violence Archive (GVA)
+- National Violent Death Reporting System (NVDRS)
 
 The linkage process and manual verification is carried out in 4 steps
 1. data_processing.R cleans and prepares the data.
@@ -27,7 +27,7 @@ Multiple steps were carried out to clean and prepare the data
   - our GVA dataset already only contained incidents from 2014 to 2018, so we only had to do this step for the NVDRS dataset.
 - we want to represent the date that the incident occurred as a numerical variable so that we can use this number for numerical comparing. We calculate the `daysSinceStart` variable, which tells you the number of days since January 1, 2014 that the incident occured.
   - for example, an incident that occured on January 1, 2014 would have `daysSinceStart=0`. An incident that occured on January 3, 2014 would have `daysSinceStart=2`.
-- NVDRS dataset contains all violent death incidents regardless if they resulted in a death by some sort of gun violence.
+- Since NVDRS dataset contains all violent death incidents regardless if they resulted in a death by some sort of gun violence, we clean the data to align with the GVA's focus.
   - We remove NVDRS incidents where the `IncidentCategory` is single suicide or multiple suicide because we only want to include incidents that involved homicides.
   - We only keep NVDRS incidents where the `WeaponType` (ie. weapon used in the incident) is a Firearm or non-powder gun.
   - We only keep NVDRS incidents where the `DeathCause` involves some sort of firearm, gun, or rifle.
@@ -36,24 +36,23 @@ Multiple steps were carried out to clean and prepare the data
   - the state that the injury occurred in is stored as `InjuryState`.
   - the city that the injury occurred in is stored as `InjuryCity`.
   - the numbered killed in the incident is stored as `NumKilled`.
-- We only keep states from each year that are well represented in the NVDRS dataset, according to the CDC Surveillence Summaries. Using this list of states for each year, we clean the GVA and NVDRS datasets.
+- We only keep states from each year that are well represented in the NVDRS dataset, according to the CDC Surveillence Summaries. Using this list of states for each year, we clean the GVA and NVDRS datasets accordingly.
 - Finally, we can save the cleaned data as an RDS or csv.
 
 # apply_fastlink.R 
 For a detailed description of fastLink and its installation, see Enamorado, Ted, Benjamin Fifield, and Kosuke Imai. 2017. fastLink: Fast Probabilistic Record Linkage with Missing Data. Version 0.6.
 
 Notes:
-- first, take your cleaned NVDRS and GVA files that you outputted as RDS files from data_processing.R, and put them as `set1_sub` and `set2_sub` respectively.
+- first, take your cleaned NVDRS and GVA files that you outputted as RDS files from data_processing.R, and save them as `set1_sub` and `set2_sub` respectively.
 - we blocked by state for computational efficiency, but you can block on any choice of variable by changing the `varnames` inside the `blockData()` function.
 - `final_merged` will store all of the matches that are returned from the fastLink() method.
 - fastLink has options to choose variables of interest that you would like to match on.
   - In `varnames`, you should list all the variables of interest.
   - In `stringdist.match`, it's recommended to list the variables that are strings (ie. words) from your variables of interest.
   - In `numeric.match`, it's recommended to list the variables that are numeric (ie. numbers) from your variables of interest.
-- the for loop indicated by `for(i in 1:41)` should span from 1 to the number of blocks that you have.
-  - To see how many blocks you have, run `names(blockstate_out)`. Then as an example, if you have 41 blocks, your for loop should say `for(i in 1:41)`.
-- if there is an error with running fastLink, it is most likely that one of the blocks does not have enough observations to carry out probabilistic record linkage, so you should create separate for loops to avoid that block.
-  - In our data, we had a total of 41 blocks.
+- the for-loop indicated by `for(i in 1:41)` should span from 1 to the number of blocks that you have.
+  - To see how many blocks you have, run `names(blockstate_out)`. Then as an example, if you have 41 blocks, your for-loop should say `for(i in 1:41)`.
+- if there is an error with running fastLink, it is most likely that one of the blocks does not have enough observations to carry out probabilistic record linkage, so you should create separate for-loops to avoid that block.
 - save the fastLink matches as RDS or csv file.
 
 # combining_online_data.R
