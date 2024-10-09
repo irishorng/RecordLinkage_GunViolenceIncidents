@@ -4,6 +4,10 @@ authors:
 - family-names: Horng
   given-names: Iris
   orcid: "https://orcid.org/0009-0002-6293-053X"
+- family-names: Yin
+  given-names: Qishuo
+- family-names: Small
+  given-names: Dylan
 doi: https://doi.org/10.5281/zenodo.13901523
 title: "RecordLinkage_GunViolenceIncidents"
 version: 1.0.0
