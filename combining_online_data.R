@@ -13,16 +13,16 @@ library("stringr")
 ########## put in file paths for all the csv files that you want to use
 ########## from the online GVA records
 ################################################################################
-data1<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/childrenkilled.csv",header=TRUE,sep=",",fill=TRUE)
-data2<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/officerinvolvedshooting.csv",header=TRUE,sep=",",fill=TRUE)
-# data3<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/school shootings.csv",header=TRUE,sep=",",fill=TRUE) #data3 didn't have any observations in 2014-2018
-# data4<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/teenskilled.csv",header=TRUE,sep=",",fill=TRUE) #data4 didn't have any observations in 2014-2018
-data5<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/mass_shootings_2014.csv",header=TRUE,sep=",",fill=TRUE)
-data6<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/mass_shootings_2015.csv",header=TRUE,sep=",",fill=TRUE)
-data7<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/mass_shootings_2016.csv",header=TRUE,sep=",",fill=TRUE)
-data8<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/mass_shootings_2017.csv",header=TRUE,sep=",",fill=TRUE)
-data9<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/mass_shootings_2018.csv",header=TRUE,sep=",",fill=TRUE)
-# data10<-read.csv("C:/Users/chiufang/Documents/URPS/GVA_records/massshooting_allyears.csv",header=TRUE,sep=",",fill=TRUE) #data10 didn't have any observations in 2014-2018
+data1<-read.csv("childrenkilled.csv",header=TRUE,sep=",",fill=TRUE)
+data2<-read.csv("officerinvolvedshooting.csv",header=TRUE,sep=",",fill=TRUE)
+# data3<-read.csv("school shootings.csv",header=TRUE,sep=",",fill=TRUE) #data3 didn't have any observations in 2014-2018
+# data4<-read.csv("teenskilled.csv",header=TRUE,sep=",",fill=TRUE) #data4 didn't have any observations in 2014-2018
+data5<-read.csv("mass_shootings_2014.csv",header=TRUE,sep=",",fill=TRUE)
+data6<-read.csv("mass_shootings_2015.csv",header=TRUE,sep=",",fill=TRUE)
+data7<-read.csv("mass_shootings_2016.csv",header=TRUE,sep=",",fill=TRUE)
+data8<-read.csv("mass_shootings_2017.csv",header=TRUE,sep=",",fill=TRUE)
+data9<-read.csv("mass_shootings_2018.csv",header=TRUE,sep=",",fill=TRUE)
+# data10<-read.csv("massshooting_allyears.csv",header=TRUE,sep=",",fill=TRUE) #data10 didn't have any observations in 2014-2018
 
 
 
