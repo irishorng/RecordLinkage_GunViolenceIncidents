@@ -13,7 +13,7 @@ library("stringr")
 ########## put in file paths for all the csv files that you want to use
 ########## from the online GVA records
 ################################################################################
-data1<-read.csv("childrenkilled.csv",header=TRUE,sep=",",fill=TRUE)
+data1<-read.csv("childrenkilled.csv",header=TRUE,sep=",",fill=TRUE) # better to name it with the meaning "childrenkilled" instead of the numbers 1 ,2 or something
 data2<-read.csv("officerinvolvedshooting.csv",header=TRUE,sep=",",fill=TRUE)
 # data3<-read.csv("school shootings.csv",header=TRUE,sep=",",fill=TRUE) #data3 didn't have any observations in 2014-2018
 # data4<-read.csv("teenskilled.csv",header=TRUE,sep=",",fill=TRUE) #data4 didn't have any observations in 2014-2018
