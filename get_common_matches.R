@@ -4,17 +4,17 @@
 #################
 
 ## your original GVA dataset
-our_GVA <- read.csv("C:/Users/chiufang/Documents/URPS/datasets/our_GVA.csv")
+our_GVA <- read.csv("our_GVA.csv")
 ourdata <- as.list(our_GVA$Incident.ID)
 
 ## the single merged file of all data from GVA online reports gotten
 ## by using FINAL_combining_online_data.R
-online_records <- read.csv("C:/Users/chiufang/Documents/URPS/RURPS/URPS_project3/GVA_online_combined_fixed.csv")
+online_records <- read.csv("GVA_online_combined_fixed.csv")
 onlinedata <- as.list(online_records$Incident.ID)
 
 ## the GVA and NVDRS matches gotten
 ## by using FINAL_processing_and_fastlink.R
-merged <- read.csv("C:/Users/chiufang/Documents/URPS/RURPS/URPS_project3/apply_fastlink_merged1.csv")
+merged <- read.csv("apply_fastlink_merged1.csv")
 our_merged <- as.list(merged$Incident.ID)
 
 ################
