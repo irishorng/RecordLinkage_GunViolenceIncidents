@@ -1,8 +1,8 @@
 library(dplyr)
 library(fastLink)
 
-set1_sub <-readRDS("NVDRS_cleaned6.RDS")
-set2_sub <-readRDS("GVA_cleaned6.RDS")
+set1_sub <-readRDS("NVDRS_cleaned6.RDS") # probaly name it with NVDRS to indicate the meanings of this dir
+set2_sub <-readRDS("GVA_cleaned6.RDS") # same
 
 blockstate_out <- blockData(set1_sub, 
                             set2_sub, 
