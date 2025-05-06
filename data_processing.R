@@ -11,22 +11,15 @@ library(readr)
 library(fastLink)
 
 ## enter the file paths of your GVA and NVDRS data respectively
-# set1 <- read.csv("C:/Users/chiufang/Documents/URPS/RURPS/URPS_project3/GVA 2014 - 2018 with Zipcode (after Geocodio) (zip code fixed).csv", header=T, stringsAsFactors = FALSE)
-set1 <- read_csv("C:/Users/chiufang/Documents/URPS/datasets/GVA 2014 - 2018 with Zipcode (after Geocodio) (zip code fixed).csv")
-# set2_complete <- read.csv("C:/Users/chiufang/Documents/URPS/RURPS/URPS_project3/NVDRS_2014_to_2018_data (zip code fix).csv", header=T, stringsAsFactors = FALSE)
-# set2_compared <- read.csv("C:/Users/chiufang/Documents/URPS/datasets/NVDRS_2014_to_2018_data (zip code fix).csv", header=T, stringsAsFactors = FALSE)
-set2_complete <- read_csv("~/URPS/datasets/NVDRS_2014_to_2018_data (zip code fix).csv")
-# for hpcc
-# set1 <- read.csv("GVA 2014 - 2018 with Zipcode (after Geocodio) (zip code fixed).csv", header=T, stringsAsFactors = FALSE)
-# set2 <- read.csv("NVDRS_2014_to_2018_data (zip code fix).csv", header=T, stringsAsFactors = FALSE)
-# answer2 <- set2_complete %>% count(InjuryDate_year)
+set1 <- read_csv("")
+set2_complete <- read_csv("")
+
 
 ################################################################################
 ########## make sure all data only includes incidents from 2014 to 2018, inclusive
 ################################################################################
 #### for NVDRS, only keep if the year of the InjuryDate is after 2014
 set2_sub <- set2_complete[set2_complete$InjuryDate_year >= 2014, ]
-# saveRDS(set2_sub, "NVDRS_2014_to_2018_data (zip code fix) (year fix).RDS") #if you want to save this NVDRS version
 
 #rename it back to set2
 set2 <- set2_sub
@@ -197,10 +190,10 @@ set2 <- set2_fixed #name it back to set2
 ################################################################################
 ########## save the cleaned data as RDS or CSV
 ################################################################################
-saveRDS(set1, "GVA_cleaned6.RDS")
-saveRDS(set2, "NVDRS_cleaned6.RDS")
+saveRDS(set1, "GVA_cleaned.RDS")
+saveRDS(set2, "NVDRS_cleaned.RDS")
 
-write.csv(set1, "GVA_cleaned6.csv", row.names=FALSE)
-write.csv(set2, "NVDRS_cleaned6.csv", row.names=FALSE)
+write.csv(set1, "GVA_cleaned.csv", row.names=FALSE)
+write.csv(set2, "NVDRS_cleaned.csv", row.names=FALSE)
 
 
