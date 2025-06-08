@@ -8,8 +8,8 @@ parent_dir = dirname(getwd())
 parent_parent_dir = dirname(parent_dir)
 
 ## the file paths of your GVA and NVDRS data
-GVA_path <- paste(c(current_dir, "data/GVA_cleaned.RDS"), collapse="/")
-NVDRS_path <- paste(c(current_dir, "data/NVDRS_cleaned.RDS"), collapse="/")
+GVA_path <- paste(c(current_dir, "GVA_cleaned.RDS"), collapse="/")
+NVDRS_path <- paste(c(current_dir, "NVDRS_cleaned.RDS"), collapse="/")
 
 NVDRS <-readRDS(NVDRS_path) 
 GVA <-readRDS(GVA_path) 
