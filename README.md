@@ -22,7 +22,7 @@ The linkage process and manual verification is carried out in 4 steps
 
 # data_processing.R
 Multiple steps were carried out to clean and prepare the data
-- first enter the file paths of your GVA and NVDRS data respectively as set1 and set2_complete.
+- first enter the file paths of your GVA and NVDRS data respectively.
 - make sure the data only includes incidents from 2014 to 2018.
   - our GVA dataset already only contained incidents from 2014 to 2018, so we only had to do this step for the NVDRS dataset.
 - we want to represent the date that the incident occurred as a numerical variable so that we can use this number for numerical comparing. We calculate the `daysSinceStart` variable, which tells you the number of days since January 1, 2014 that the incident occured.
@@ -43,7 +43,7 @@ Multiple steps were carried out to clean and prepare the data
 For a detailed description of fastLink and its installation, see Enamorado, Ted, Benjamin Fifield, and Kosuke Imai. 2017. fastLink: Fast Probabilistic Record Linkage with Missing Data. Version 0.6.
 
 Notes:
-- first, take your cleaned NVDRS and GVA files that you outputted as RDS files from data_processing.R, and save them as `set1_sub` and `set2_sub` respectively.
+- first, take your cleaned NVDRS and GVA files that you outputted as RDS files from data_processing.R, and save them as `NVDRS` and `GVA` respectively.
 - we blocked by state for computational efficiency, but you can block on any choice of variable by changing the `varnames` inside the `blockData()` function.
 - `final_merged` will store all of the matches that are returned from the fastLink() method.
 - fastLink has options to choose variables of interest that you would like to match on.
@@ -58,8 +58,8 @@ Notes:
 # combining_online_data.R
 Here, we combining GVA Standard Reports
 From GVA's website (https://www.gunviolencearchive.org/reports), select which standard reports you would like to use to compare with your fastLink merged dataset. 
-- download each of the standard reports and save them as csv files. You can then read each of the csv files and store them as `data1`, `data2`, etc.
-- merge all of the data together into one file by doing `bind_rows(data1, data2)`.
+- download each of the standard reports and save them as csv files. You can then read each of the csv files and store them as their respective names
+- merge all of the data together into one file by doing `bind_rows(one_data_set, another_data_set)`.
 - clean this combined data so that it only contains states for each year that are well represented in the NVDRS dataset (this is the same criteria we used to clean our original GVA and NVDRS datasets)
 - save the combined file as an RDS file or csv file .
 
