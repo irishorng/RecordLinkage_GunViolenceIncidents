@@ -2,19 +2,27 @@
 ################
 #setting up our data
 #################
+# set relative path
+current_dir = getwd()
+parent_dir = dirname(getwd())
+parent_parent_dir = dirname(parent_dir)
 
 ## your original GVA dataset
-our_GVA <- read.csv("our_GVA.csv")
+GVA_path <- paste(c(current_dir, "GVA.csv"), collapse="/")
+our_GVA <- read.csv(GVA_path)
+
 ourdata <- as.list(our_GVA$Incident.ID)
 
 ## the single merged file of all data from GVA online reports gotten
-## by using FINAL_combining_online_data.R
-online_records <- read.csv("GVA_online_combined_fixed.csv")
+## resulting from running combining_online_data.R
+online_records_path <- paste(c(current_dir, "GVA_online_combined.csv"), collapse="/")
+online_records <- read.csv(online_records_path)
 onlinedata <- as.list(online_records$Incident.ID)
 
 ## the GVA and NVDRS matches gotten
-## by using FINAL_processing_and_fastlink.R
-merged <- read.csv("apply_fastlink_merged1.csv")
+## resulting from running apply_fastlink.R
+merged_path <- paste(c(current_dir, "final_merged.csv"), collapse="/")
+merged <- read.csv(merged_path)
 our_merged <- as.list(merged$Incident.ID)
 
 ################
@@ -41,12 +49,13 @@ merged_keep_matches$IncidentReport <- sub("^", "https://www.gunviolencearchive.o
 merged_keep_matches <- merged_keep_matches %>% relocate(IncidentReport) #764
 
 
-## optional: put incident id and date to the front so we can see more obviously when the data is outputted in exel
+## optional: put incident id and date to the front so we can see more obviously when the data is outputted in excel
 merged_move_to_front <- merged_keep_matches %>% relocate(Incident.ID) #Incident.ID is from the GVA data
 merged_date_to_front <- merged_move_to_front %>% relocate(Date)
 
 merged_keep_matches <- merged_date_to_front
+
 ################
-#save the file, this can be used for manual verifications
+#save the file, this can be used for manual verification
 #################
-write.csv(merged_keep_matches, "final_merged_with_GVA_online_records_fixed.csv", row.names=FALSE)
+write.csv(merged_keep_matches, "final_merged_with_GVA_online_records.csv", row.names=FALSE)
