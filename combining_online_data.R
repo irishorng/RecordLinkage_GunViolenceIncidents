@@ -23,6 +23,9 @@ create_path_name <- function(file, current_dir) {
   return(paste(c(current_dir, file), collapse = "/"))
 }
 
+# comment general: delete all the unused commemted line here
+# make sure check nothing is missing before delete
+
 ## the file paths of your GVA and NVDRS data
 childrenkilled_path <- create_path_name("childrenkilled.csv", current_dir)
 officerinvolvedshooting_path <- create_path_name("officerinvolvedshooting.csv", current_dir)
