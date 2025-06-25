@@ -27,7 +27,7 @@ final_merged <- list() #create variable for our returned matches
 ################################################################################
 ################################################################################
 
-for (i in 1:41) {
+for (i in 1:41) { # comment: better to create an additional variable and explain the '41' here
   set1_block_i <- set1_sub[blockstate_out[[i]]$dfA.inds,]
   set2_block_i <- set2_sub[blockstate_out[[i]]$dfB.inds,]
   temp_out_block_i <- fastLink(
