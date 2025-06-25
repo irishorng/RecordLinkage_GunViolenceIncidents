@@ -22,6 +22,9 @@ NVDRS_path <- paste(c(current_dir, "NVDRS.csv"), collapse="/")
 GVA <- read_csv(GVA_path)
 NVDRS <- read_csv(NVDRS_path)
 
+# comment general: delete all the unused commemted line here
+# make sure check nothing is missing before delete
+
 
 ################################################################################
 ########## make sure all data only includes incidents from 2014 to 2018, inclusive
